@@ -1,0 +1,11 @@
+{
+  "selected_states": 4,
+  "heldout_rows": 10000,
+  "adjacent_state_persistence_pct": 93.30971238015839,
+  "mean_run_length_bars": 9.569377990430622,
+  "median_run_length_bars": 8.0,
+  "max_run_length_bars": 25,
+  "mean_max_filtered_probability": 0.9602790602793805,
+  "min_state_occupancy_pct": 9.26,
+  "max_state_occupancy_pct": 38.22
+}

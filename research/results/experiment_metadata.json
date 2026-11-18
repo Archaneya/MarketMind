@@ -1,0 +1,53 @@
+{
+  "project": "MarketMind",
+  "experiment": "unsupervised market regime model comparison",
+  "seeds": [
+    7,
+    21,
+    42,
+    100,
+    2026
+  ],
+  "simulated_minutes_per_seed": 14000,
+  "analysis_timeframe_minutes": 3,
+  "train_fraction": 0.7,
+  "n_clusters": 4,
+  "features": [
+    "ret_5",
+    "roll_vol",
+    "rsi",
+    "ma_diff",
+    "momentum",
+    "atr_pct",
+    "volume_change"
+  ],
+  "preprocessing": {
+    "log_transform": [
+      "roll_vol",
+      "atr_pct"
+    ],
+    "scaler": "StandardScaler fit on train only"
+  },
+  "models": {
+    "K-Means": {
+      "n_clusters": 4,
+      "n_init": 10
+    },
+    "Gaussian Mixture": {
+      "n_components": 4,
+      "covariance_type": "full",
+      "n_init": 3
+    },
+    "Agglomerative": {
+      "n_clusters": 4,
+      "linkage": "ward"
+    },
+    "DBSCAN": {
+      "eps": 1.5,
+      "min_samples": 20
+    }
+  },
+  "selection_rule": "highest mean held-out ARI; mean held-out NMI as tie-breaker",
+  "warning": "Synthetic simulator benchmark only; not real-market validation.",
+  "completed_at_utc": "2026-11-16T12:19:08Z"
+}

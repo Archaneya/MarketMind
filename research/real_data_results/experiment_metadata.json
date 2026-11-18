@@ -1,0 +1,54 @@
+{
+  "dataset": "Bundled NIFTY 50 1-minute CSV files",
+  "input_files": [
+    "data\\raw\\nifty50\\1min\\2017\\NIFTY50_1min_2017.csv",
+    "data\\raw\\nifty50\\1min\\2018\\NIFTY50_1min_2018.csv",
+    "data\\raw\\nifty50\\1min\\2019\\NIFTY50_1min_2019.csv",
+    "data\\raw\\nifty50\\1min\\2020\\NIFTY50_1min_2020.csv",
+    "data\\raw\\nifty50\\1min\\2021\\NIFTY50_1min_2021.csv",
+    "data\\raw\\nifty50\\1min\\2022\\NIFTY50_1min_2022.csv",
+    "data\\raw\\nifty50\\1min\\2023\\NIFTY50_1min_2023.csv",
+    "data\\raw\\nifty50\\1min\\2024\\NIFTY50_1min_2024.csv",
+    "data\\raw\\nifty50\\1min\\2025\\NIFTY50_1min_2025.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-01.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-02.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-03.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-04.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-05.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-06.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-07.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-08.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-09.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-10.csv",
+    "data\\raw\\nifty50\\1min\\2026\\NIFTY50_1min_2026-11.csv"
+  ],
+  "raw_rows_after_cleaning": 890607,
+  "resampled_timeframe": "15min",
+  "feature_columns": [
+    "ret_5",
+    "roll_vol",
+    "rsi",
+    "ma_diff",
+    "momentum",
+    "atr_pct"
+  ],
+  "feature_note": "OHLC-only; volume excluded because historical coverage is incomplete",
+  "split": "chronological 70/30",
+  "train_rows": 41519,
+  "test_rows": 17794,
+  "fit_sample_rows": 10000,
+  "heldout_evaluation_rows": 10000,
+  "random_state": 42,
+  "log_transformed_columns": [
+    "roll_vol",
+    "atr_pct"
+  ],
+  "no_ground_truth_labels": true,
+  "limitations": [
+    "No independent ground-truth regime labels; accuracy, ARI and NMI are not reported.",
+    "Internal clustering metrics do not measure trading profitability.",
+    "Agglomerative and DBSCAN held-out predictions use documented proxy methods.",
+    "Research features exclude volume for consistent long-term coverage.",
+    "Production detector uses a different seven-feature schema; this notebook does not export a production artifact."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "experiment": "Causal rolling-window wavelet decomposition",
+  "dataset": "Bundled NIFTY 50 1-minute OHLC CSV files",
+  "bar_interval": "15min",
+  "wavelet": "haar",
+  "decomposition_level": 3,
+  "trailing_window_bars": 16,
+  "input_series": "15-minute log returns",
+  "feature_columns": [
+    "wavelet_low_last",
+    "wavelet_low_mean",
+    "wavelet_low_slope",
+    "wavelet_detail_d3_energy",
+    "wavelet_detail_d2_energy",
+    "wavelet_detail_d1_energy",
+    "wavelet_high_energy",
+    "wavelet_high_low_ratio"
+  ],
+  "train_fraction": 0.7,
+  "train_rows": 14956,
+  "test_rows": 6410,
+  "train_start": "2017-04-03 13:15:00",
+  "train_end": "2023-12-27 14:45:00",
+  "test_start": "2023-12-27 15:00:00",
+  "test_end": "2026-11-17 15:15:00",
+  "causality_prefix_max_abs_difference": 0.0,
+  "causality_check_passed": true,
+  "limitations": [
+    "Wavelet features are causal trailing-window summaries, not ground-truth regimes.",
+    "Finite-window boundary effects remain and depend on wavelet and window choice.",
+    "No supervised accuracy metric is available because independent regime labels are absent.",
+    "No trading profitability claim is made; transaction-cost-aware walk-forward testing is still required.",
+    "The chosen wavelet, level and window are research hyperparameters and should be sensitivity-tested."
+  ]
+}

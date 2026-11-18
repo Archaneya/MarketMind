@@ -1,0 +1,38 @@
+{
+  "experiment": "Gaussian HMM regime detection",
+  "dataset": "Bundled NIFTY 50 1-minute CSV files",
+  "resampled_timeframe": "15min",
+  "feature_columns": [
+    "ret_5",
+    "roll_vol",
+    "rsi",
+    "ma_diff",
+    "momentum",
+    "atr_pct"
+  ],
+  "feature_note": "Six OHLC-only features; volume excluded for consistent long-term coverage",
+  "chronological_split": "70/30",
+  "hmm_train_rows": 20000,
+  "hmm_test_rows": 10000,
+  "train_start": "2020-09-30 14:45:00",
+  "train_end": "2023-12-29 10:30:00",
+  "test_start": "2023-12-29 10:45:00",
+  "test_end": "2025-08-11 12:30:00",
+  "state_counts_tested": [
+    3,
+    4,
+    5
+  ],
+  "covariance_type": "diag",
+  "selected_state_count_by_training_bic": 4,
+  "test_probabilities": "causal forward-filtered; no future test observations used at each timestamp",
+  "ground_truth_regime_labels_available": false,
+  "limitations": [
+    "No independent ground-truth regime labels; accuracy, ARI and NMI are not reported.",
+    "Lowest training BIC is only a provisional state-count choice.",
+    "Held-out likelihood is evaluated on one contiguous test block.",
+    "The selected HMM is not automatically the most profitable trading model.",
+    "Causal filtering uses hmmlearn Gaussian emission likelihoods; do not replace with smoothed posteriors for live use.",
+    "Production integration requires separate walk-forward validation and transaction-cost-aware strategy tests."
+  ]
+}

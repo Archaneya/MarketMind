@@ -1,0 +1,63 @@
+{
+  "model": "GaussianMixture",
+  "source": "Bundled NIFTY 50 historical OHLC",
+  "symbol": "NIFTY 50",
+  "interval": "3m",
+  "features": [
+    "ret_5",
+    "roll_vol",
+    "rsi",
+    "ma_diff",
+    "momentum",
+    "atr_pct"
+  ],
+  "train_period": [
+    "2017-04-03T11:42:00",
+    "2024-12-16T11:21:00"
+  ],
+  "test_period": [
+    "2024-12-16T11:24:00",
+    "2026-11-17T15:27:00"
+  ],
+  "cluster_mapping": {
+    "0": "High Volatility",
+    "1": "Sideways / Range-bound",
+    "2": "Bullish Trend",
+    "3": "Bearish Trend"
+  },
+  "cluster_notes": [
+    "Cluster 0 -> High Volatility: MA spread -0.148%, momentum -0.06%, volatility 0.226%/bar",
+    "Cluster 1 -> Sideways / Range-bound: MA spread +0.018%, momentum +0.01%, volatility 0.031%/bar",
+    "Cluster 2 -> Bullish Trend: MA spread +0.007%, momentum +0.02%, volatility 0.105%/bar",
+    "Cluster 3 -> Bearish Trend: MA spread +0.004%, momentum -0.01%, volatility 0.055%/bar"
+  ],
+  "metrics": {
+    "train_rows": 237480,
+    "test_rows": 59370,
+    "feature_rows": 296850,
+    "n_clusters_present_in_test": 4,
+    "silhouette": 0.1575648855044918,
+    "davies_bouldin": 3.688207101092871,
+    "calinski_harabasz": 1004.9395803478001,
+    "test_cluster_counts": {
+      "0": 661,
+      "1": 27804,
+      "2": 8008,
+      "3": 22897
+    },
+    "test_regime_counts": {
+      "High Volatility": 661,
+      "Sideways / Range-bound": 27804,
+      "Bullish Trend": 8008,
+      "Bearish Trend": 22897
+    },
+    "evaluation_note": "Unsupervised clustering metrics on a chronological holdout; not directional accuracy or profitability."
+  },
+  "limitations": [
+    "Unsupervised clusters are interpreted using transparent centroid heuristics, not independent labels.",
+    "NIFTY 50 index volume is excluded.",
+    "Internal clustering metrics are not directional accuracy or profitability.",
+    "Live dashboard candles are simulated; this artifact demonstrates inference integration, not live-market validation."
+  ],
+  "artifact": "ml/models/nifty50_gmm_3m.joblib"
+}

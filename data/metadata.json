@@ -1,0 +1,16 @@
+{
+  "provider": "Yahoo Finance via yfinance",
+  "symbol": "^NSEI",
+  "source_interval": "1m",
+  "training_interval": "3m (resampled from 1m)",
+  "period_requested": "7d",
+  "downloaded_at_utc": "2026-11-16T14:39:10.961181+00:00",
+  "timezone": "Asia/Kolkata",
+  "session_filter": "09:15-15:30 Asia/Kolkata",
+  "raw_rows": 2625,
+  "three_minute_rows": 875,
+  "first_timestamp": "2026-11-05T09:15:00+05:30",
+  "last_timestamp": "2026-11-16T15:27:00+05:30",
+  "volume_note": "NIFTY 50 is an index; volume is not used as a model feature.",
+  "limitations": "Yahoo 1-minute history is limited (typically up to 7 days); this is not a multi-year training set."
+}

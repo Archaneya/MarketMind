@@ -1,0 +1,144 @@
+{
+  "experiment": "Dual-scale temporal feature comparison",
+  "dataset": "Bundled NIFTY 50 1-minute OHLC CSV files",
+  "bar_interval": "15min",
+  "chronological_split": "70/30",
+  "total_aligned_rows": 21340,
+  "train_rows": 14937,
+  "test_rows": 6403,
+  "train_start": "2017-04-05 15:15:00",
+  "train_end": "2023-12-28 14:15:00",
+  "test_start": "2023-12-28 14:30:00",
+  "test_end": "2026-11-17 15:15:00",
+  "feature_sets": {
+    "baseline_ohlc": [
+      "base__ret_5",
+      "base__roll_vol",
+      "base__rsi",
+      "base__ma_diff",
+      "base__momentum",
+      "base__atr_pct"
+    ],
+    "wavelet_low_only": [
+      "wavelet_low_last",
+      "wavelet_low_mean",
+      "wavelet_low_slope"
+    ],
+    "wavelet_high_only": [
+      "wavelet_detail_d3_energy",
+      "wavelet_detail_d2_energy",
+      "wavelet_detail_d1_energy",
+      "wavelet_high_energy",
+      "wavelet_high_low_ratio"
+    ],
+    "wavelet_dual_scale": [
+      "wavelet_low_last",
+      "wavelet_low_mean",
+      "wavelet_low_slope",
+      "wavelet_detail_d3_energy",
+      "wavelet_detail_d2_energy",
+      "wavelet_detail_d1_energy",
+      "wavelet_high_energy",
+      "wavelet_high_low_ratio"
+    ],
+    "baseline_plus_dual_scale": [
+      "base__ret_5",
+      "base__roll_vol",
+      "base__rsi",
+      "base__ma_diff",
+      "base__momentum",
+      "base__atr_pct",
+      "wavelet_low_last",
+      "wavelet_low_mean",
+      "wavelet_low_slope",
+      "wavelet_detail_d3_energy",
+      "wavelet_detail_d2_energy",
+      "wavelet_detail_d1_energy",
+      "wavelet_high_energy",
+      "wavelet_high_low_ratio"
+    ]
+  },
+  "models": [
+    "KMeans_4",
+    "GMM_4_diag",
+    "GaussianHMM_4state"
+  ],
+  "hmm_max_train_rows": 20000,
+  "hmm_max_test_rows": 10000,
+  "hmm_results": [
+    {
+      "feature_set": "baseline_ohlc",
+      "hmm_converged": true,
+      "hmm_iterations": 71,
+      "hmm_warning_count": 0,
+      "hmm_train_rows": 14937,
+      "hmm_test_rows": 6403,
+      "hmm_train_start": "2017-04-05 15:15:00",
+      "hmm_train_end": "2023-12-28 14:15:00",
+      "hmm_test_start": "2023-12-28 14:30:00",
+      "hmm_test_end": "2026-11-17 15:15:00",
+      "mean_max_filtered_probability": 0.944801709269312
+    },
+    {
+      "feature_set": "wavelet_low_only",
+      "hmm_converged": true,
+      "hmm_iterations": 35,
+      "hmm_warning_count": 0,
+      "hmm_train_rows": 14937,
+      "hmm_test_rows": 6403,
+      "hmm_train_start": "2017-04-05 15:15:00",
+      "hmm_train_end": "2023-12-28 14:15:00",
+      "hmm_test_start": "2023-12-28 14:30:00",
+      "hmm_test_end": "2026-11-17 15:15:00",
+      "mean_max_filtered_probability": 0.9194896053997246
+    },
+    {
+      "feature_set": "wavelet_high_only",
+      "hmm_converged": true,
+      "hmm_iterations": 105,
+      "hmm_warning_count": 0,
+      "hmm_train_rows": 14937,
+      "hmm_test_rows": 6403,
+      "hmm_train_start": "2017-04-05 15:15:00",
+      "hmm_train_end": "2023-12-28 14:15:00",
+      "hmm_test_start": "2023-12-28 14:30:00",
+      "hmm_test_end": "2026-11-17 15:15:00",
+      "mean_max_filtered_probability": 0.9665592557994597
+    },
+    {
+      "feature_set": "wavelet_dual_scale",
+      "hmm_converged": true,
+      "hmm_iterations": 79,
+      "hmm_warning_count": 0,
+      "hmm_train_rows": 14937,
+      "hmm_test_rows": 6403,
+      "hmm_train_start": "2017-04-05 15:15:00",
+      "hmm_train_end": "2023-12-28 14:15:00",
+      "hmm_test_start": "2023-12-28 14:30:00",
+      "hmm_test_end": "2026-11-17 15:15:00",
+      "mean_max_filtered_probability": 0.9692733578331544
+    },
+    {
+      "feature_set": "baseline_plus_dual_scale",
+      "hmm_converged": true,
+      "hmm_iterations": 43,
+      "hmm_warning_count": 0,
+      "hmm_train_rows": 14937,
+      "hmm_test_rows": 6403,
+      "hmm_train_start": "2017-04-05 15:15:00",
+      "hmm_train_end": "2023-12-28 14:15:00",
+      "hmm_test_start": "2023-12-28 14:30:00",
+      "hmm_test_end": "2026-11-17 15:15:00",
+      "mean_max_filtered_probability": 0.9755708610333913
+    }
+  ],
+  "limitations": [
+    "No independent ground-truth market regime labels are available.",
+    "Internal clustering metrics are not supervised accuracy.",
+    "HMM uses causal forward-filtered test state probabilities.",
+    "HMM is evaluated on a capped contiguous train/test block; K-Means and GMM use the full shared partition.",
+    "Feature-set results should be interpreted within each model family.",
+    "No strategy profitability claim is made; transaction-cost-aware walk-forward testing remains necessary.",
+    "Feature and model hyperparameters require sensitivity analysis."
+  ]
+}

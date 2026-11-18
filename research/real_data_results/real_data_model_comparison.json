@@ -1,0 +1,54 @@
+[
+  {
+    "model":"KMeans",
+    "clusters_in_test_excluding_noise":4,
+    "noise_pct":0.0,
+    "silhouette":0.235796219,
+    "davies_bouldin":1.2996983201,
+    "calinski_harabasz":2736.4422343091,
+    "adjacent_label_persistence_pct":82.7582758276,
+    "fit_seconds":10.57866,
+    "heldout_predict_seconds":0.0015923,
+    "heldout_rows":10000,
+    "prediction_method":"native"
+  },
+  {
+    "model":"Agglomerative",
+    "clusters_in_test_excluding_noise":4,
+    "noise_pct":0.0,
+    "silhouette":0.2219106982,
+    "davies_bouldin":1.3071144451,
+    "calinski_harabasz":2301.1243759946,
+    "adjacent_label_persistence_pct":82.6582658266,
+    "fit_seconds":8.3521122,
+    "heldout_predict_seconds":0.0411104,
+    "heldout_rows":10000,
+    "prediction_method":"nearest-centroid proxy"
+  },
+  {
+    "model":"GMM",
+    "clusters_in_test_excluding_noise":4,
+    "noise_pct":0.0,
+    "silhouette":0.1072179852,
+    "davies_bouldin":3.0662909551,
+    "calinski_harabasz":1051.8375708961,
+    "adjacent_label_persistence_pct":81.898189819,
+    "fit_seconds":1.155117,
+    "heldout_predict_seconds":0.0082534,
+    "heldout_rows":10000,
+    "prediction_method":"native"
+  },
+  {
+    "model":"DBSCAN",
+    "clusters_in_test_excluding_noise":1,
+    "noise_pct":8.08,
+    "silhouette":null,
+    "davies_bouldin":null,
+    "calinski_harabasz":null,
+    "adjacent_label_persistence_pct":96.399639964,
+    "fit_seconds":1.3565639,
+    "heldout_predict_seconds":0.1496868,
+    "heldout_rows":10000,
+    "prediction_method":"nearest-core-point-within-eps proxy"
+  }
+]
